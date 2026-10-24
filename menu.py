@@ -21,6 +21,9 @@ class Menu:
 
     def show_menu(self):
         print("***** Menu *****")
+        if not self.items:
+            print("Menu is empty")
+            return
         print("Name\tPrice\tQuantity")
         for item in self.items:
-            print(f"{item.name}\t{item.price}\t{item.quantity}")
+            print(f"{item.name}\t{item.price:.2f}\t{item.quantity}")
