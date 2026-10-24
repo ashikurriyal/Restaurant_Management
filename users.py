@@ -32,10 +32,18 @@ class Admin(User):
     def view_employee(self, restaurent):
         restaurent.view_employee()
 
+    def add_new_item(self, restaurent, item):
+        restaurent.menu.add_menu_item(item)
+
+    def remove_item(self, restaurent, item):
+            restaurent.remove_item(item)
+
+
 class Restaurent:
     def __init__(self, name):
         self.name = name
         self.employees = [] # This is the databse
+        self.menu = FoodItem()
 
     def add_employee(self, employee):
         self.employees.append(employee)
@@ -66,9 +74,21 @@ class Menu:
         else:
             print("Item not found")
 
+    def show_menu(self):
+        print("***** Menu *****")
+        print("Name\tPrice\tQuantity")
+        for item in self.items:
+            print(f"{item.name}\t{item.price}\t{item.quantity}")
 
 
-ad = Admin("Riyad", "2346762374", "riyad@gmail.com", "Dhaka")
-ad.add_employee("Sagor", "sagor@gmail.com", "123123123", "Kushtia", 32, "Chef", 12000)
+class FoodItem:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
 
-ad.view_employee()
+
+mn = Menu()
+item = FoodItem("Burger", 50.35, 10)
+mn.add_menu_item(item)
+mn.show_menu()
