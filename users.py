@@ -69,26 +69,7 @@ class Admin(User):
         restaurent.menu.add_menu_item(item)
 
     def remove_item(self, restaurent, item):
-            restaurent.remove_item(item)
+        restaurent.menu.remove_item(item)
 
-
-
-
-
-res = Restaurent("Khanas")
-mn = Menu()
-item = FoodItem("Burger", 50.35, 10)
-item2 = FoodItem("Pizza", 20.55, 7)
-admin = Admin("Ali", "ali@gmail.com", 2342342, "Dhaka")
-admin.add_new_item(res, item)
-admin.add_new_item(res, item2)
-
-customer1 = Customer("Samir", "samir@gmail.com", 2342342, "Dhaka")
-customer1.view_menu(res)
-
-
-item_name = input("Enter item name: ")
-item_quantity = int(input("Enter Item Quantity: "))
-
-customer1.add_to_cart(res, item_name, item_quantity)
-customer1.view_cart()
+    def view_menu(self, restaurent):
+        restaurent.menu.show_menu()
